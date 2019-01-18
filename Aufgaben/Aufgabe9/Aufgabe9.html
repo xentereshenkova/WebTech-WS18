@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Aufgabe 9</title>
+    <style>
+      #div1 {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+      }
+      #inp1 {
+        font-weight:bold;
+        font-size:1.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Mausereignisse behandeln mit JS</h1>
+    <div id="div1"
+    onclick="changeColor('green');"
+    ondblclick="insertText('Doppelklick')"
+    onmouseenter="changeSize(true);"
+    onmouseleave="changeSize(false);"
+    ></div>
+    <h1>Tastaturereignisse behandeln mit JS</h1>
+    <input id="inp1" onkeydown="mirrorInput();"
+    onfocus="document.getElementById('inp1').style.backgroundColor='lightblue';"
+    onblur="document.getElementById('inp1').style.backgroundColor='white';"
+    />
+    <div id="div2" style="padding-top:20px;font-weight:bold;"></<div>
+
+    </div>
+
+    </div>
+
+    <script>
+      function changeColor(color) {
+        document.getElementById('div1').style.backgroundColor =color;
+      }
+      function insertText(text) {
+        var div = document.getElementById('div1');
+        div.innerHTML = text;
+        div.style.textAlign = 'center';
+        div.style.color = 'white';
+        div.style.lineHeight = '200px';
+      }
+      function changeSize(bigger) {
+        var div = document.getElementById('div1');
+        if(bigger) {
+          div.style.width = '300px';
+          div.style.height = '300px';
+          div.style.lineHeight = '300px';
+        }
+        else {
+          div.style.width = '200px';
+          div.style.height = '200px';
+          div.style.lineHeight = '200px';
+        }
+      }
+
+      function mirrorInput() {
+        var inp = document.getElementById('inp1').value;
+        if (isNaN(inp) || inp<1 || inp>1000) {
+          document.getElementById('inp1').style.color='red';
+        }
+        else {
+          document.getElementById('inp1').style.color='green';
+        }
+        document.getElementById('div2').innerHTML = inp;
+      }
+    </script>
+    </div>
+  </body>
+</html>
